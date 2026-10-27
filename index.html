@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peterbrain Shopping Mall</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      color: #222;
+    }
+
+    header {
+      background: #14213d;
+      color: white;
+      padding: 22px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 27px;
+    }
+
+    header p {
+      margin-bottom: 0;
+    }
+
+    .search {
+      display: flex;
+      padding: 15px;
+      background: white;
+      gap: 8px;
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .search button, .shop-button {
+      background: #fca311;
+      color: #14213d;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: #e8eef8;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    .categories, .products {
+      padding: 20px 12px;
+    }
+
+    .categories h2, .products h2 {
+      text-align: center;
+    }
+
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .category {
+      background: white;
+      padding: 20px 8px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px #ddd;
+      font-weight: bold;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px #ddd;
+    }
+
+    .product img {
+      width: 100%;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 7px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+    }
+
+    .price {
+      color: #087443;
+      font-weight: bold;
+    }
+
+    .product button {
+      background: #14213d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #14213d;
+      color: white;
+      text-align: center;
+      padding: 22px 12px;
+      margin-top: 20px;
+    }
+
+    #cart {
+      text-align: center;
+      font-weight: bold;
+      padding: 12px;
+      background: white;
+    }
+
+    @media (min-width: 700px) {
+      .category-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🛍️ Peterbrain Shopping Mall</h1>
+    <p>Your Favourite Place to Shop Online!</p>
+  </header>
+
+  <div class="search">
+    <input type="search" id="searchBox"
+      placeholder="Search for products...">
+    <button onclick="searchProducts()">Search</button>
+  </div>
+
+  <div id="cart">
+    🛒 Shopping Cart: <span id="cartCount">0</span> items
+  </div>
+
+  <section class="hero">
+    <h2>Welcome to Peterbrain Shopping Mall!</h2>
+    <p>Discover great products for your everyday needs.</p>
+    <a href="#products">
+      <button class="shop-button">Shop Now</button>
+    </a>
+  </section>
+
+  <section class="categories">
+    <h2>Shop by Category</h2>
+
+    <div class="category-list">
+      <div class="category">👗 Fashion & Clothing</div>
+      <div class="category">👟 Shoes & Bags</div>
+      <div class="category">📱 Phones & Electronics</div>
+      <div class="category">🎁 Gift Cards</div>
+      <div class="category">🏠 Home & Household</div>
+      <div class="category">💄 Beauty & Personal Care</div>
+      <div class="category">💍 Accessories</div>
+      <div class="category">🛒 Other Products</div>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <h2>Featured Products</h2>
+
+    <div class="product-list" id="productList">
+
+      <div class="product">
+        <img src="https://placehold.co/300x200?text=Fashion"
+          alt="Fashion product">
+        <h3>Fashion Collection</h3>
+        <p>Discover our fashion range.</p>
+        <p class="price">Price coming soon</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://placehold.co/300x200?text=Shoes"
+          alt="Shoes">
+        <h3>Stylish Shoes</h3>
+        <p>Find your next favourite pair.</p>
+        <p class="price">Price coming soon</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://placehold.co/300x200?text=Electronics"
+          alt="Electronics">
+        <h3>Electronics</h3>
+        <p>Explore electronic products.</p>
+        <p class="price">Price coming soon</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://placehold.co/300x200?text=Home"
+          alt="Home products">
+        <h3>Home Essentials</h3>
+        <p>Products for your home.</p>
+        <p class="price">Price coming soon</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <h3>Peterbrain Shopping Mall</h3>
+    <p>Shop conveniently from one place.</p>
+    <p>Contact: Add your business email later</p>
+    <p>&copy; 2026 Peterbrain Shopping Mall</p>
+  </footer>
+
+  <script>
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      document.getElementById("cartCount").textContent = cartCount;
+      alert("Product added to your demo cart!");
+    }
+
+    function searchProducts() {
+      const query = document.getElementById("searchBox")
+        .value.toLowerCase().trim();
+
+      const products = document.querySelectorAll(".product");
+      let found = false;
+
+      products.forEach(function(product) {
+        const matches = product.textContent.toLowerCase()
+          .includes(query);
+
+        product.style.display = matches ? "" : "none";
+
+        if (matches) found = true;
+      });
+
+      if (!found) {
+        alert("No matching products found.");
+      }
+    }
+  </script>
+
+</body>
+</html>
